@@ -1,4 +1,4 @@
-FROM debian:stretch-slim
+FROM debian:buster-slim
 ENV VERSION 0.4.3
 WORKDIR /app
 RUN apt-get update && apt-get install -y curl openssl && \
@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y curl openssl && \
     chmod +x pact-stub-server && \
     apt-get purge -y curl && apt-get -y --purge autoremove && \
     rm -rf /var/lib/apt/lists/* /etc/apt/sources.list.d/*
+COPY pacts pacts
 EXPOSE 8080
 ENTRYPOINT ["./pact-stub-server"]
 CMD ["--help"]
-

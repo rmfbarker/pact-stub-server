@@ -10,4 +10,4 @@ RUN apt-get update && apt-get install -y curl openssl && \
 COPY pacts pacts
 EXPOSE 8080
 ENTRYPOINT ["./pact-stub-server"]
-CMD ["--help"]
+CMD ["--port", "8080", "--dir", "pacts"]
